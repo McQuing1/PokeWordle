@@ -18,7 +18,6 @@ import {
   NOT_ENOUGH_LETTERS_MESSAGE,
   WORD_NOT_FOUND_MESSAGE,
   CORRECT_WORD_MESSAGE,
-  NEW_WORD_TEXT,
   TIME_LEFT_TEXT,
 } from './constants/strings'
 import {
@@ -122,7 +121,6 @@ function App() {
   const onDelete = () => {
     setCurrentGuess(currentGuess.slice(0, -1))
   }
-  const onSpace = ' '
 
   const onEnter = () => {
     if (isGameWon || isGameLost) {
