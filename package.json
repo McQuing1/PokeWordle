@@ -27,6 +27,7 @@
     "lint": "prettier --check src",
     "start": "react-scripts start",
     "test": "react-scripts test",
+    "deploy": "gh-pages -b master -d build",
     "prepare": "husky install"
   },
   "eslintConfig": {
