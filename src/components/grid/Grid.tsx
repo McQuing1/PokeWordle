@@ -1,6 +1,7 @@
 import { CompletedRow } from './CompletedRow'
 import { CurrentRow } from './CurrentRow'
 import { EmptyRow } from './EmptyRow'
+import { solution } from '../../lib/words'
 
 type Props = {
   guesses: string[]

@@ -1,4 +1,5 @@
 import { Cell } from './Cell'
+import { solution } from '../../lib/words'
 
 type Props = {
   guess: string
@@ -6,7 +7,7 @@ type Props = {
 
 export const CurrentRow = ({ guess }: Props) => {
   const splitGuess = guess.split('')
-  const emptyCells = Array.from(Array(5 - splitGuess.length))
+  const emptyCells = Array.from(Array(solution.length - splitGuess.length))
 
   return (
     <div className="flex justify-center mb-1">

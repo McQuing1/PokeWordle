@@ -1,8 +1,18 @@
 import { solution } from './words'
 
-export type CharStatus = 'absent' | 'present' | 'correct'
+export type CharStatus = 'absent' | 'present' | 'correct' | 'empty'
 
 export type CharValue =
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '0'
   | 'Q'
   | 'W'
   | 'E'
@@ -13,6 +23,7 @@ export type CharValue =
   | 'I'
   | 'O'
   | 'P'
+  | 'Å'
   | 'A'
   | 'S'
   | 'D'
@@ -22,6 +33,8 @@ export type CharValue =
   | 'J'
   | 'K'
   | 'L'
+  | 'Ø'
+  | 'Æ'
   | 'Z'
   | 'X'
   | 'C'
@@ -29,6 +42,10 @@ export type CharValue =
   | 'B'
   | 'N'
   | 'M'
+  | '.'
+  | ' '
+  | '-'
+  | "'"
 
 export const getStatuses = (
   guesses: string[]
@@ -36,6 +53,13 @@ export const getStatuses = (
   const charObj: { [key: string]: CharStatus } = {}
 
   guesses.forEach((word) => {
+    if (word.length < solution.length) {
+      word = word + ' '
+    }
+    if (word.length < solution.length) {
+      word = word + ' '
+    }
+
     word.split('').forEach((letter, i) => {
       if (!solution.includes(letter)) {
         // make status absent
@@ -59,6 +83,30 @@ export const getStatuses = (
 
 export const getGuessStatuses = (guess: string): CharStatus[] => {
   const splitSolution = solution.split('')
+  if (solution.length > guess.length) {
+    guess = guess + ' '
+  }
+  if (solution.length > guess.length) {
+    guess = guess + ' '
+  }
+  if (solution.length > guess.length) {
+    guess = guess + ' '
+  }
+  if (solution.length > guess.length) {
+    guess = guess + ' '
+  }
+  if (solution.length > guess.length) {
+    guess = guess + ' '
+  }
+  if (solution.length > guess.length) {
+    guess = guess + ' '
+  }
+  if (solution.length > guess.length) {
+    guess = guess + ' '
+  }
+  if (solution.length > guess.length) {
+    guess = guess + ' '
+  }
   const splitGuess = guess.split('')
 
   const solutionCharsTaken = splitSolution.map((_) => false)
@@ -66,6 +114,7 @@ export const getGuessStatuses = (guess: string): CharStatus[] => {
   const statuses: CharStatus[] = Array.from(Array(guess.length))
 
   // handle all correct cases first
+
   splitGuess.forEach((letter, i) => {
     if (letter === splitSolution[i]) {
       statuses[i] = 'correct'

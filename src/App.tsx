@@ -18,14 +18,21 @@ import {
   NOT_ENOUGH_LETTERS_MESSAGE,
   WORD_NOT_FOUND_MESSAGE,
   CORRECT_WORD_MESSAGE,
+  NEW_WORD_TEXT,
+  TIME_LEFT_TEXT,
 } from './constants/strings'
-import { isWordInWordList, isWinningWord, solution } from './lib/words'
+import {
+  isWordInWordList,
+  isWinningWord,
+  solution,
+  tomorrow,
+} from './lib/words'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
 } from './lib/localStorage'
-
+import Countdown from 'react-countdown'
 import './App.css'
 
 const ALERT_TIME_MS = 2000
@@ -103,7 +110,11 @@ function App() {
   }, [isGameWon, isGameLost])
 
   const onChar = (value: string) => {
-    if (currentGuess.length < 5 && guesses.length < 6 && !isGameWon) {
+    if (
+      currentGuess.length < solution.length &&
+      guesses.length < solution.length &&
+      !isGameWon
+    ) {
       setCurrentGuess(`${currentGuess}${value}`)
     }
   }
@@ -111,12 +122,13 @@ function App() {
   const onDelete = () => {
     setCurrentGuess(currentGuess.slice(0, -1))
   }
+  const onSpace = ' '
 
   const onEnter = () => {
     if (isGameWon || isGameLost) {
       return
     }
-    if (!(currentGuess.length === 5)) {
+    if (!(currentGuess.length > 2)) {
       setIsNotEnoughLetters(true)
       return setTimeout(() => {
         setIsNotEnoughLetters(false)
@@ -132,7 +144,11 @@ function App() {
 
     const winningWord = isWinningWord(currentGuess)
 
-    if (currentGuess.length === 5 && guesses.length < 6 && !isGameWon) {
+    if (
+      currentGuess.length > 2 &&
+      guesses.length < solution.length + 1 &&
+      !isGameWon
+    ) {
       setGuesses([...guesses, currentGuess])
       setCurrentGuess('')
 
@@ -149,8 +165,8 @@ function App() {
   }
 
   return (
-    <div className="py-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div className="flex w-80 mx-auto items-center mb-8 mt-12">
+    <div className="py-1 max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <div className="flex w-80 mx-auto items-center mb-1 mt-1">
         <h1 className="text-xl grow font-bold dark:text-white">
           {WORDLE_TITLE}
         </h1>
@@ -167,11 +183,22 @@ function App() {
           onClick={() => setIsStatsModalOpen(true)}
         />
       </div>
+      <div className="h-6 flex justify-center  mb-2 mt-1">
+        <h5 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+          {TIME_LEFT_TEXT}
+        </h5>
+        <Countdown
+          className="ml-1 text-lg font-medium text-gray-900 dark:text-gray-100"
+          date={tomorrow}
+          daysInHours={true}
+        />
+      </div>
       <Grid guesses={guesses} currentGuess={currentGuess} />
       <Keyboard
         onChar={onChar}
         onDelete={onDelete}
         onEnter={onEnter}
+        onSpace={onChar}
         guesses={guesses}
       />
       <InfoModal
