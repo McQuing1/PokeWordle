@@ -29,7 +29,7 @@
     "lint": "prettier --check src",
     "start": "react-scripts start",
     "test": "react-scripts test",
-    "prepare": "husky install"
+    "prepare": "husky install",
     "predeploy": "npm run build",
     "deploy": "gh-pages -b master -d build"
   },
