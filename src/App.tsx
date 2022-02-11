@@ -182,9 +182,9 @@ function App() {
         />
       </div>
       <div className="h-6 flex justify-center  mb-2 mt-1">
-        <h5 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+        <h6 className="text-lg font-medium text-gray-900 dark:text-gray-100">
           {TIME_LEFT_TEXT}
-        </h5>
+        </h6>
         <Countdown
           className="ml-1 text-lg font-medium text-gray-900 dark:text-gray-100"
           date={tomorrow}
