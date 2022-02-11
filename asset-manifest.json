@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/PokeWordle/static/css/main.e2470a2d.css",
-    "main.js": "/PokeWordle/static/js/main.fc9d2a7a.js",
+    "main.css": "/PokeWordle/static/css/main.889db45c.css",
+    "main.js": "/PokeWordle/static/js/main.eee1691f.js",
     "static/js/787.3500bfec.chunk.js": "/PokeWordle/static/js/787.3500bfec.chunk.js",
     "index.html": "/PokeWordle/index.html",
-    "main.e2470a2d.css.map": "/PokeWordle/static/css/main.e2470a2d.css.map",
-    "main.fc9d2a7a.js.map": "/PokeWordle/static/js/main.fc9d2a7a.js.map",
+    "main.889db45c.css.map": "/PokeWordle/static/css/main.889db45c.css.map",
+    "main.eee1691f.js.map": "/PokeWordle/static/js/main.eee1691f.js.map",
     "787.3500bfec.chunk.js.map": "/PokeWordle/static/js/787.3500bfec.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e2470a2d.css",
-    "static/js/main.fc9d2a7a.js"
+    "static/css/main.889db45c.css",
+    "static/js/main.eee1691f.js"
   ]
 }
